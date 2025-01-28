@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Envelope</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <img src="image1.png" alt="Top Left Image" class="top-left-image" />
+    <img src="image1.png" alt="Top Right Image" class="top-right-image" />
+
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <button id="play-music">Play</button>
+        <button id="pause-music">Pause</button>
+    </div>
+
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Cutest Person</strong>
+                        <p>
+                            You are the most beautiful person I have ever known, inside and out since the day I met you. 
+                            You make me want to be a better person, to grow with you, to support you and to love you.
+                            Can't wait to make more memories with you.
+                            P.S.  You make me kilig and gigil too ♡
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        // Toggle envelope flap on click
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+
+        // Create floating hearts
+        const createHeart = () => {
+            const heart = document.createElement('div');
+            heart.className = 'heart-animation';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random duration
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Remove after animation
+        };
+
+        setInterval(createHeart, 500); // Generate a heart every 500ms
+
+        // Music controls
+        const audio = document.getElementById('background-music');
+        const playButton = document.getElementById('play-music');
+        const pauseButton = document.getElementById('pause-music');
+
+        playButton.addEventListener('click', () => {
+            audio.play();
+        });
+
+        pauseButton.addEventListener('click', () => {
+            audio.pause();
+        });
+    </script>
+</body>
+</html>
